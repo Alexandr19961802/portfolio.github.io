@@ -1,0 +1,567 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* ==== NAVBAR ==== */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background: linear-gradient(121deg, #f4f1f1 45%, #000000 100%);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.home img {
+    max-width: 50px;
+    border-radius: 50%;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a,
+button {
+    font-family: "Montserrat", sans-serif;
+
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-links .bg {
+    padding: 0% 3% 0% 3%;
+    background-color: white;
+    color: black;
+    border-radius: 50px;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 70%;
+    height: 2px;
+    background-color: rgb(255, 221, 0);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: rgb(255, 221, 0);
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+}
+
+/* ==== BURGER MENU ==== */
+
+.burger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+
+}
+
+.burger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    border-radius: 3px;
+    position: relative;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.burger.active span:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+}
+
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+}
+
+/* ==== ADAPTIVE ==== */
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        /* Высота на весь экран */
+        background-color: rgba(0, 0, 0, 0.95);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+        z-index: 999;
+    }
+
+    .nav-links.open {
+        transform: translateY(0);
+        /* Показываем меню */
+    }
+
+    .burger {
+        display: flex;
+    }
+}
+
+
+/* ==== SECTION === */
+
+.home1 {
+    height: 100vh;
+    padding-top: 80px;
+    background: linear-gradient(100deg, #c2c1c1 50%, #000000 30%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portfolio {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    width: 100%;
+
+    gap: 40px;
+}
+
+.name {
+    flex: 1 1 300px;
+    text-align: center;
+    color: #020202;
+
+}
+
+.name h3 {
+    color: #000000;
+
+
+    margin-bottom: 10px;
+}
+
+.name h1 {
+    color: #000000;
+
+
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.name p {
+    color: #000000;
+
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.image {
+    flex: 1 1 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.image img {
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio .icon {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 5%;
+}
+
+.portfolio .icon img {
+    width: 5em;
+    animation: myAnim 2s ease 0s 2 normal forwards;
+}
+
+@keyframes myAnim {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+
+    30% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+
+    40% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+
+    50% {
+        transform: scale3d(0.85, 1.15, 1);
+    }
+
+    65% {
+        transform: scale3d(1.05, 0.95, 1);
+    }
+
+    75% {
+        transform: scale3d(0.95, 1.05, 1);
+    }
+
+    100% {
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@media (max-width: 768px) {
+    .name {
+        margin-top: 25%;
+
+        text-align: center;
+    }
+
+    .portfolio {
+        flex-direction: column-reverse;
+        text-align: center;
+        justify-content: space-around;
+
+    }
+
+    .name h1 {
+        font-size: 2rem;
+        color: rgba(177, 255, 42, 0.858);
+    }
+
+    .name p {
+        color: white;
+        font-size: 1rem;
+    }
+
+    .image img {
+        margin-top: 20%;
+        max-width: 350px;
+
+    }
+
+    .name h3 {
+        color: #ffffff;
+
+
+        margin-bottom: 10px;
+    }
+
+    .home1 {
+        height: 100vh;
+        padding-top: 80px;
+        background: linear-gradient(100deg, #c2c1c1 10%, #000000 50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: auto;
+    }
+}
+
+.about {
+    background-image: url(/1702647790_bogatyr-club-p-fon-dlya-prezentatsii-po-programmirovaniyu-1.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: auto;
+    position: relative;
+    z-index: 1;
+}
+
+.about::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.673);
+    /* уровень затемнения */
+    z-index: -1;
+}
+
+.about-me {
+    font-size: large;
+    padding-left: 16%;
+    padding-right: 16%;
+    padding-top: 8%;
+    padding-bottom: 2%;
+}
+
+.about-me p {
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    padding: 0.3%;
+}
+
+.about-me .html {
+    color: orangered;
+}
+
+.about-me .css {
+    color: blue;
+}
+
+.about-me .js {
+    color: yellow;
+}
+
+.about .skills {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 10%;
+    padding-top: 5%;
+    height: auto;
+}
+
+.about .skills li {
+    font-size: x-large;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+}
+
+.html {
+    color: orangered;
+}
+
+.css {
+    color: blue;
+}
+
+.js {
+    color: yellow;
+}
+.text-1 h1{text-align: center;
+margin-top: 1%;
+font-family: "Playfair Display", serif;
+
+color: white;}
+
+@media (max-width: 768px) {
+   
+       .about .skills {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        
+      }
+      
+  
+    .skills ul {
+      padding-left: 20px; /* аккуратный отступ */
+    }
+  
+    .skills li {
+        list-style: none;
+      padding: 5px 0;      /* зазор между пунктами */
+    }
+  
+  }
+  .Name-pr h1{text-align: center;
+    color: white;
+    font-family: "Playfair Display", serif;
+
+
+padding-top: 2%;
+padding-bottom: 2%;}
+  .project{background-image: url(/1643819369_18-abrakadabra-fun-p-temnie-oboi-dlya-klaviaturi-24.jpg);
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+height: auto;
+position: relative;
+z-index: 1;}
+.project::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.811);
+    /* уровень затемнения */
+    z-index: -1;
+}
+  .ima {
+    display: flex;
+   
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .card {    font-family: "Montserrat", sans-serif;
+
+    position: relative;
+    width: 40%;
+    height:auto;
+    margin-top: 2%;
+    padding-bottom: 5%;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+  
+  .card img {
+    border: solid 3px rgb(255, 145, 0);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+  }
+  
+  /* Текст и кнопка */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease;
+    border-radius: 10px;
+  }
+  .none{display: none;}
+  .card:hover .overlay {
+    opacity: 1;
+  }
+  
+  .overlay p {
+    margin-bottom: 10px;
+    font-size: 18px;
+    text-align: center;
+  }
+  .card a{text-decoration: none;
+color:black;
+padding: 2%;
+background-color: orange;}
+.card a:hover{color: white;}
+.text-none{display: none;}
+  
+@media (max-width: 1110px){
+    .text-none{display: block;
+        color: white;
+    padding-top: 1%;}
+    .none{display: inline-block;
+        margin-top: 2%;
+        width: 40%;
+    text-align: center;
+    align-items: center;
+}
+.card{text-align: center;}
+    .overlay{display: none;}
+    .ima{display: flex;
+    flex-direction: column;
+justify-content: center;
+align-items: center;}
+.card {    font-family: "Montserrat", sans-serif;
+
+    position: relative;
+    width: 60%;
+    height:auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+}
+@media (max-width: 710px){
+   
+.card {    font-family: "Montserrat", sans-serif;
+
+    position: relative;
+    width: 80%;
+    height:auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+}
+  .img-cont img{width: 50px;
+    height: 50px;
+    display: block;
+    image-rendering: auto; /* может быть crisp-edges/pixelated, если нужны чёткие пиксели */
+}
+.contacts .soc{text-align: center;
+padding: 2%;
+color: white;
+font-family: "Playfair Display", serif;
+
+font-size: x-large;}
+.img-cont{display: flex;
+justify-content: space-around;}  
+
+.contacts {height: auto;
+    padding-top: 5%;
+    background: linear-gradient(-121deg, #484848 45%, #000000 100%);
+}
+
+.img-cont a {
+    display: inline-block;
+    transition: transform 0.3s ease;
+    transform-origin: center;
+    will-change: transform;
+  }
+  
+  .img-cont a:hover {
+    transform: scale(1.1);
+  }
+  .mobile{text-align: center;
+height: auto;
+padding-bottom: 4%;}
+.mobile p{font-family: "Playfair Display", serif;
+
+    font-size: x-large;
+color: white;
+text-align: center;
+padding-top: 2%;
+}
+.mobile a{text-align: center;
+font-size: x-large;
+color: white;
+
+text-decoration: none;}
+.mobile .p{font-family: "Montserrat", sans-serif;
+color: rgb(249, 237, 10);}
